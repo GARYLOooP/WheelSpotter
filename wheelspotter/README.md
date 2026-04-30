@@ -1,148 +1,208 @@
 # WheelSpotter
 
-> 🎯 Your wheel-spotting scout. Finds reusable solutions before you build from scratch.
+<div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+**A wheel-spotting scout that finds reusable solutions before you build from scratch.**
 
-## What It Does
+[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/GARYLOooP/wheelspotter)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8+-yellow.svg)](https://www.python.org/)
 
-**WheelSpotter** spots reusable "wheels" before you write code. The core principle: **solutions must be directly integrable—not flashy but unusable toys.**
+*Gets smarter with every use, but never stops exploring.*
 
-## Key Features
+</div>
 
-- 🎯 **Complexity-aware filtering** - Different search strategies for L1 (simple), L2 (medium), L3 (complex) requirements
-- 🔍 **Intent-based platform selection** - Automatically activates relevant platforms (GitHub, PyPI, npm, Maven, Crates.io)
-- 💰 **Cost control** - Token/time budgets with early termination when search cost exceeds self-build cost
-- ✅ **Closed-loop delivery** - Returns actionable commands (`pip install X`) or clear "self-build" recommendation
+---
+
+## Overview
+
+WheelSpotter helps you find existing libraries, frameworks, and tools instead of reinventing the wheel. It features:
+
+- **🧠 Self-Learning**: Learns from your feedback to improve future searches
+- **🎯 Intent-Aware**: Understands whether you need a library, service, or tool
+- **⚡ Cost-Controlled**: Smart budget management prevents over-searching
+- **🔄 Anti-Filter-Bubble**: Never stops exploring new options
+
+---
 
 ## Quick Start
 
+### Prerequisites
+
+- **Python 3.8+** (stdlib only, no external dependencies)
+- **GitHub Token** (recommended)
+
+> ⚠️ **Important**: Without a GitHub token, you're limited to 60 API requests/hour. With a token, you get 5000 requests/hour.
+
+### Set Up GitHub Token
+
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/wheelspotter.git
-cd wheelspotter
+# Linux/macOS
+export GITHUB_TOKEN=your_github_token_here
 
-# Install dependencies
-pip install -r requirements.txt
+# Windows CMD
+set GITHUB_TOKEN=your_github_token_here
 
-# Basic usage
+# Windows PowerShell
+$env:GITHUB_TOKEN="your_github_token_here"
+```
+
+### Basic Usage
+
+```bash
+# Search for a library
 python scripts/search.py -q "python pdf parser" -c L2 -i library
 
-# Multiple platforms
-python scripts/search.py -q "react charting" -c L3 -p github,npm
+# Search multiple platforms
+python scripts/search.py -q "react charting" -c L2 -i library -p github,npm
 
-# With GitHub token (recommended for higher rate limits)
-python scripts/search.py -q "rust web framework" --token $GITHUB_TOKEN
+# Record feedback for learning
+python scripts/search.py --learn -q "python pdf" --chose "pypdf2" --rating 4
 ```
 
-## Usage Examples
+---
 
-### Find a Python library (L2 complexity)
+## How It Works
+
+```
+Your Query
+    ↓
+[Complexity Grading] → L1/L2/L3 (determines budget)
+    ↓
+[Intent Classification] → library/service/tool/reference
+    ↓
+[Platform Selection] → GitHub, PyPI, npm, Maven, Crates.io...
+    ↓
+[Parallel Search] → Concurrent API calls
+    ↓
+[Smart Filter + Sort] → Quality signals + learned preferences
+    ↓
+Recommendations with install commands
+```
+
+---
+
+## Learning System
+
+WheelSpotter gets smarter over time:
+
+1. **Search Recording**: Every search is logged
+2. **Feedback Collection**: Ask users which package they chose
+3. **Platform Weights**: Frequently chosen platforms get priority
+4. **Keyword Expansion**: Learns associations (e.g., "excel" → "spreadsheet")
+
 ```bash
-python scripts/search.py -q "python excel read write" -c L2 -i library -p github,pypi
+# Record feedback
+python scripts/search.py --learn -q "excel parser" --chose "openpyxl" --rating 5
+
+# Analyze feedback
+python scripts/search.py --teach
+
+# View statistics
+python scripts/search.py --stats
+
+# Reset learning data
+python scripts/search.py --forget
 ```
 
-Output:
+---
+
+## CLI Reference
+
+| Parameter | Short | Description | Default |
+|-----------|-------|-------------|---------|
+| `--query` | `-q` | Search keywords | (required) |
+| `--complexity` | `-c` | L1/L2/L3 | L2 |
+| `--intent` | `-i` | library/service/tool/reference | library |
+| `--platforms` | `-p` | Comma-separated: github,pypi,npm,maven,crates | github |
+| `--limit` | `-l` | Max results per platform | 20 |
+| `--token` | `-t` | GitHub token | $GITHUB_TOKEN |
+| `--output` | `-o` | Output file | stdout |
+| `--no-memory` | | Disable learning | false |
+| `--learn` | | Record feedback mode | false |
+| `--chose` | | Chosen package (for --learn) | - |
+| `--rating` | | Rating 1-5 (for --learn) | 3 |
+| `--teach` | | Run learning engine | false |
+| `--stats` | | Show statistics | false |
+| `--forget` | | Reset learning data | false |
+
+---
+
+## Example Output
+
 ```json
 {
   "status": "found",
   "recommendations": [
     {
-      "name": "openpyxl/openpyxl",
-      "source": "github",
-      "url": "https://github.com/openpyxl/openpyxl",
-      "stars": 3200,
-      "action": "pip install openpyxl"
+      "name": "openpyxl",
+      "source": "pypi",
+      "url": "https://openpyxl.readthedocs.io/",
+      "match_score": 0.92,
+      "action": "pip install openpyxl",
+      "license": "MIT",
+      "stars": 1200
     }
-  ]
+  ],
+  "cost": {
+    "time_seconds": 3.2,
+    "memory_enabled": true
+  }
 }
 ```
 
-### Find a Rust crate (L3 complexity)
-```bash
-python scripts/search.py -q "rust async runtime" -c L3 -p github,crates
-```
+---
 
-### Simple function (L1 - recommends self-build)
-```bash
-python scripts/search.py -q "email validation" -c L1
-```
-Returns: "No suitable wheels found. Recommend self-build." (because email validation is ~10 lines of regex)
+## Anti-Filter-Bubble Guarantees
 
-## CLI Parameters
+| Mechanism | Effect |
+|-----------|--------|
+| **Exploration floor (20%)** | No platform weight drops below 20% of base |
+| **90-day decay** | Old feedback loses influence over time |
+| **Diversity boost (1.3x)** | New query domains get priority |
+| **70/30 blending** | Learned preferences never fully dominate |
 
-| Parameter | Short | Description | Default |
-|-----------|-------|-------------|---------|
-| `--query` | `-q` | Search keywords (required) | - |
-| `--complexity` | `-c` | L1/L2/L3 | L2 |
-| `--intent` | `-i` | library/service/tool/reference | library |
-| `--platforms` | `-p` | Comma-separated list | github |
-| `--limit` | `-l` | Max results per platform | 20 |
-| `--token` | `-t` | GitHub token (optional) | - |
-| `--output` | `-o` | Output file | stdout |
-
-## Platform Support
-
-| Platform | Best For | Note |
-|----------|----------|------|
-| GitHub | All intents | Primary source, star-based ranking |
-| PyPI | Python libraries | Exact package name search |
-| npm | JavaScript packages | Popularity-based ranking |
-| Maven | Java libraries | Central repository search |
-| Crates.io | Rust crates | Download-based ranking |
-
-## How It Works
-
-```
-User Query
-    ↓
-[1] Complexity Grading (L1/L2/L3)
-    ↓
-[2] Intent Classification (library/service/tool/reference)
-    ↓
-[3] Multi-Platform Search (parallel API calls)
-    ↓
-[4] Hard Filtering (stars, update time, archived status)
-    ↓
-[5] Top 5 Recommendations with actionable commands
-```
-
-### Cost Control Matrix
-
-| Complexity | Token Budget | Time Budget | Star Threshold |
-|------------|--------------|-------------|----------------|
-| L1 Simple | 300 | 8s | ≥10 |
-| L2 Medium | 600 | 12s | ≥50 |
-| L3 Complex | 800 | 15s | ≥100 |
+---
 
 ## Project Structure
 
 ```
 wheelspotter/
-├── SKILL.md              # Skill definition (for AI agents)
+├── SKILL.md              # Full skill documentation
 ├── README.md             # This file
 ├── scripts/
-│   └── search.py         # Standalone search script (wheelspot CLI)
-├── requirements.txt      # Python dependencies
-└── LICENSE              # MIT License
+│   ├── search.py         # Main search script
+│   └── wheel_memory.json # Learning data (auto-created)
+└── requirements.txt      # Empty (stdlib only)
 ```
 
-## Use as a Skill
-
-This project is designed to work as a WorkBuddy skill. The `SKILL.md` file contains:
-- Trigger conditions (when to activate)
-- Workflow steps (complexity grading, intent classification, filtering)
-- Integration instructions
+---
 
 ## Contributing
 
-Contributions welcome! Please feel free to submit a Pull Request.
+Contributions welcome! Please open an issue or PR on GitHub.
+
+---
 
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
-## Acknowledgments
+---
 
-Named "WheelSpotter" because it spots reusable wheels before you build from scratch.
+## Changelog
+
+| Version | Changes |
+|---------|---------|
+| **3.0.0** | Self-learning feedback system, anti-filter-bubble mechanisms |
+| **2.0.0** | Concurrent search, npm fixes, GitHub noise filtering |
+| **1.1.0** | Zero external deps, PyPI/npm fixes |
+| **1.0.0** | Initial release |
+
+---
+
+<div align="center">
+
+**Don't reinvent the wheel — spot it!**
+
+</div>
