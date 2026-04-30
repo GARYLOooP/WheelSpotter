@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [3.0.0] - 2025-04-30
+## [1.0.1] - 2026-04-30
 
 ### Added
 - **Self-Learning Feedback System**
