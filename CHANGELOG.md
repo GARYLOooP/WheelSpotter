@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.1] - 2026-04-30
+## [1.0.4] - 2026-04-30
 
 ### Added
 - **Self-Learning Feedback System**
@@ -53,7 +53,7 @@ pm install, etc.)
 
 ---
 
-## [2.0.0] - 2025-04-15
+## [1.0.3] - 2026-04-15
 
 ### Added
 - **Concurrent Platform Searches**
@@ -79,7 +79,7 @@ pm install, etc.)
 
 ---
 
-## [1.1.0] - 2025-04-01
+## [1.0.2] - 2025-04-01
 
 ### Added
 - Zero external dependencies (stdlib only)
@@ -92,7 +92,7 @@ pm install, etc.)
 
 ---
 
-## [1.0.0] - 2025-03-15
+## [1.0.1] - 2025-03-15
 
 ### Added
 - Initial release
