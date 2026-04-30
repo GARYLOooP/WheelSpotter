@@ -130,7 +130,7 @@ wheelspotter/
 
 ## Use as a Skill
 
-This project is designed to work as a WorkBuddy skill. The `SKILL.md` file contains:
+This project is designed to work as a  skill. The `SKILL.md` file contains:
 - Trigger conditions (when to activate)
 - Workflow steps (complexity grading, intent classification, filtering)
 - Integration instructions
