@@ -1,0 +1,7 @@
+# WheelSpotter - Python Dependencies
+# Note: search.py v1.1+ uses only stdlib (urllib, json, dataclasses).
+# No external dependencies are required.
+#
+# If you want to use `requests` instead of stdlib urllib for better
+# connection pooling, you can install it optionally:
+# requests>=2.31.0

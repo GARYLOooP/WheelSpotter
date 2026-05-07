@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.4] - 2026-04-30
+## [3.0.0] - 2026-04-30
 
 ### Added
 - **Self-Learning Feedback System**
@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - --teach command: Run learning engine to update platform weights and keyword expansions
   - --forget command: Reset learning data
   - --stats command: Display learning statistics
-  - Memory persisted to scripts/wheel_memory.json`r
+  - Memory persisted to scripts/wheel_memory.json
 
 - **Anti-Filter-Bubble Mechanisms**
   - 20% exploration floor: No platform weight drops below 20% of base
@@ -25,8 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Enhanced Search Results**
   - match_score field: 0-1 score indicating result quality (based on stars/threshold)
-  - ction field: Ready-to-use install command (pip install, 
-pm install, etc.)
+  - action field: Ready-to-use install command (pip install, npm install, etc.)
   - Description truncation: 200 chars max for cleaner output
 
 - **Improved Platform Detection**
@@ -36,9 +35,9 @@ pm install, etc.)
 
 ### Fixed
 - **BUG-06**: SearchResult.to_dict() now outputs match_score field
-- **BUG-10**: _infer_source() correctly identifies Python packages like scikit-learn, pytorch, 	ensorflow`r
+- **BUG-10**: _infer_source() correctly identifies Python packages like scikit-learn, pytorch, tensorflow
 - **Carry-forward bug**: Keyword expansions correctly capped at 5 per stem, even when feedback is empty
-- **API consistency**: search_crates() now accepts 	imeout parameter like other platform search functions
+- **API consistency**: search_crates() now accepts timeout parameter like other platform search functions
 - **Platform weights**: Single feedback entry no longer causes division-by-zero or unexpected weight changes
 
 ### Changed
@@ -53,7 +52,7 @@ pm install, etc.)
 
 ---
 
-## [1.0.3] - 2026-04-15
+## [2.0.0] - 2026-04-15
 
 ### Added
 - **Concurrent Platform Searches**
@@ -79,7 +78,7 @@ pm install, etc.)
 
 ---
 
-## [1.0.2] - 2025-04-01
+## [1.1.0] - 2026-04-01
 
 ### Added
 - Zero external dependencies (stdlib only)
@@ -92,7 +91,7 @@ pm install, etc.)
 
 ---
 
-## [1.0.1] - 2025-03-15
+## [1.0.0] - 2026-03-15
 
 ### Added
 - Initial release
@@ -106,7 +105,7 @@ pm install, etc.)
 
 | Version | Date | Key Feature |
 |---------|------|-------------|
-| 3.0.0 | 2025-04-30 | Self-learning feedback system |
-| 2.0.0 | 2025-04-15 | Concurrent searches, type safety |
-| 1.1.0 | 2025-04-01 | Zero deps, PyPI/npm support |
-| 1.0.0 | 2025-03-15 | Initial release |
+| 3.0.0 | 2026-04-30 | Self-learning feedback system |
+| 2.0.0 | 2026-04-15 | Concurrent searches, type safety |
+| 1.1.0 | 2026-04-01 | Zero deps, PyPI/npm support |
+| 1.0.0 | 2026-03-15 | Initial release |
