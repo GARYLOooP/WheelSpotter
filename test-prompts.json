@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "I need a Python library to parse and extract text from PDF files. Something lightweight with minimal dependencies.",
+    "expected": "Should trigger complexity grading (L1-L2), classify intent as 'library', search GitHub+PyPI, return top 2-3 results with pip install commands and star counts, ask for feedback at the end."
+  },
+  {
+    "id": 2,
+    "prompt": "Is there an existing solution for React that handles form validation with schema-based rules? I'm already using TypeScript.",
+    "expected": "Should classify L2, intent=library, search GitHub+npm, filter for TypeScript-compatible packages, return results like zod/react-hook-form/yup with npm install commands."
+  },
+  {
+    "id": 3,
+    "prompt": "Spot any wheels for building a real-time collaborative editing feature in my Node.js app. Needs to support multiple cursors.",
+    "expected": "Should classify L3 (complex system), search across multiple platforms, possibly return yjs/sharedb/operational-transform libs, note high complexity and suggest evaluation criteria."
+  }
+]
