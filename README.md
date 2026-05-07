@@ -194,7 +194,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 | Version | Changes |
 |---------|---------|
-| **3.0.2** | TL;DR quick-start, Stop&Ask checkpoints, Chinese triggers |
+| **3.0.2** | DR quick-start, Stop&Ask checkpoints, Chinese triggers |
 | **3.0.0** | Self-learning feedback system, anti-filter-bubble mechanisms |
 | **2.0.0** | Concurrent search, npm fixes, GitHub noise filtering |
 | **1.1.0** | Zero external deps, PyPI/npm fixes |
